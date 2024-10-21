@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Discussion App</title>
+    <style>
+        #messages { border: 1px solid #ddd; padding: 10px; height: 150px; overflow-y: scroll; }
+        .message { margin-bottom: 10px; padding: 5px; background: #f9f9f9; }
+    </style>
+</head>
+<body>
+    <h1>Discussion App</h1>
+    
+   
+    <input type="text" id="message" placeholder="Type your message">
+    <button onclick="postdiscussion()">Post Discusssion</button>
+
+    
+    <div id="messages"></div>
+
+    <script>
+
+        function postdiscussion() {
+            let mtext = document.getElementById('message').value;
+            if (mtext === "") {
+                alert("Please enter a message.");
+                return;
+            }
+
+            setTimeout(() => {
+                let mdiv = document.createElement('div');
+                mdiv.classList.add('message');
+                mdiv.textContent = mtext;
+
+                document.getElementById('messages').appendChild(mdiv);
+
+                document.getElementById('message').value = "";
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
