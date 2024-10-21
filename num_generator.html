@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Number Generator</title>
+</head>
+<body>
+  <div id="shownum"></div>
+  <button onclick="generateNumber()">Generate Number</button>
+
+  <script>
+    function generateNumber() {
+      let rnum = Math.floor(Math.random() * 100); 
+      document.getElementById("shownum").innerHTML = rnum;
+    }
+  </script>
+</body>
+</html>
