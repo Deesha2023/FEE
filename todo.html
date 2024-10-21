@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo App</title>
+    <style>
+        .completed { text-decoration: line-through; }
+    </style>
+</head>
+<body>
+    <input type="text" id="task" placeholder="Add a task">
+    <button onclick="addTask()">Add</button>
+    <h1> Click on task to mark task as complete (toggle line-through)</h1>
+    <ul id="taskshow"></ul>
+
+    <script>
+        function addTask() {
+            let tasktext = document.getElementById('task').value;
+
+            if (tasktext === "") {
+                alert("Please enter a task.");
+                return;
+            }
+
+            let newtask = document.createElement('li');
+            newtask.textContent = tasktext;
+
+            newtask.onclick = function() {
+                newtask.classList.toggle('completed');
+            };
+
+            document.getElementById('taskshow').appendChild(newtask);
+            document.getElementById('task').value = "";
+        }
+    </script>
+</body>
+</html>
