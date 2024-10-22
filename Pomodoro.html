@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Pomodoro Clock</title>
+    <style>
+        #timerDisplay { font-size: 2rem; margin-bottom: 10px; }
+        button { margin-right: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Pomodoro Clock</h1>
+    <div id="timerDisplay">25:00</div>
+    <button onclick="reset()">Reset</button>
+    <button onclick="start()">Start</button>
+    <button onclick="stop()">Stop</button>
+
+    <script>
+        let ptimer;
+        let rem_time = 25 * 60;  
+
+        function format(seconds) {
+            let minutes = Math.floor(seconds / 60);
+            let secs = seconds % 60;
+            return `${minutes.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function update() {
+            document.getElementById('timerDisplay').textContent = format(rem_time);
+        }
+
+
+        function start() {
+            if (!ptimer) {
+                ptimer = setInterval(() => {
+                    if (rem_time > 0) {
+                        rem_time--;
+                        update();
+                    } else {
+                        alert("Time's up! Take a break!");
+                        clearInterval(ptimer);
+                    }
+                }, 1000);
+            }
+        }
+
+        function stop() {
+            clearInterval(ptimer);
+            ptimer = null;
+        }
+
+        function reset() {
+            clearInterval(ptimer);
+            ptimer = null;
+            rem_time = 25 * 60;
+            update();
+        }
+
+        update();
+    </script>
+</body>
+</html>

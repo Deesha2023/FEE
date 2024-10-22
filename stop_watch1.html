@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Stop watch</title>
+    <style>
+        #display { font-size: 2rem; margin-bottom: 10px; }
+        button { margin-right: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Stop watch</h1>
+    <div id="display">0</div>
+    <button onclick="reset()">Reset</button>
+    <button onclick="start()">Start</button>
+    <button onclick="stop()">Stop</button>
+    
+    <script>
+        let timer;
+        let seconds = 0;
+        function start() {
+            if (!timer) {
+                timer = setInterval(() => {
+                    seconds++;
+                    document.getElementById('display').textContent = seconds;
+                }, 1000);  
+            }
+        }
+
+        function stop() {
+            clearInterval(timer);
+            timer = null;
+        }
+        function reset() {
+            clearInterval(timer);
+            timer = null;
+            seconds = 0;
+            document.getElementById('display').textContent = seconds;
+        }
+    </script>
+</body>
+</html>
